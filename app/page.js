@@ -4,6 +4,12 @@ import styles from './page.module.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
+const triggerServerErr = async () => {
+  'use server';
+
+  throw new Error('Server error')
+}
+
 export default function Home() {
   return (
     <main className={styles.main}>
@@ -12,6 +18,11 @@ export default function Home() {
           Get started by editing&nbsp;
           <code className={styles.code}>app/page.js</code>
         </p>
+          <form action={triggerServerErr}>
+                <button type="submit" >
+                    Trigger server error
+                </button>
+            </form>
         <div>
           <a
             href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
